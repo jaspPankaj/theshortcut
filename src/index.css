@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+/* ================= THEME TOKENS ================= */
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);  
+
+  --color-accent: var(--accent);
+  --color-highlight: var(--highlight);
+}
+
+/* ================= BASE STYLES ================= */
+@layer base {
+  :root {
+  --background: #5c8391;    /* Deep Slate Teal */
+  --foreground: #beced4;    /* Light Steel Blue */
+  --primary: #f4f8f9;       /* Cloud White */
+  --secondary: #31464d;     /* Midnight Teal */
+  --accent: #c3c789;        /* Moss Gold */
+  --highlight: #f5efe6;     /* Bone Cream */
+}
+
+  html {
+    scroll-snap-type: y mandatory;
+  }
+
+  body {
+    @apply bg-background text-primary overflow-x-hidden;
+    cursor: none;
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+    opacity: 0.03; /* Very subtle grain */
+    pointer-events: none;
+    z-index: 150;
+  }
+
+  
+  /* Optional: Show default cursor on mobile devices */
+  @media (pointer: coarse) {
+    body { cursor: auto; }
+    .custom-cursor { display: none; }
+  }
+
+  
+}
+
+@utility mainContainer{
+  @apply relative min-h-screen bg-background px-8 md:px-16 overflow-hidden py-24;
+}
+
+@utility insideContainer {
+  @apply max-w-7xl mx-auto z-10;
+}
+
+@utility bookGrid {
+  @apply grid grid-cols-1 lg:grid-cols-2 gap-16 items-center;
+}
+
+
