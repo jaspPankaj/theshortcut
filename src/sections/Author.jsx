@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useRef } from "react";
+import dylan from "../assets/DylanTrussell.png";
 
 const Author = () => {
   const containerVariants = {
@@ -28,8 +29,8 @@ const Author = () => {
   };
 
   return (
-    <section id="Author" className="relative min-h-screen bg-background py-24 px-8 md:px-16 flex items-center">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+    <div className="mainContainer flex items-center">
+      <div className="insideContainer bookGrid">
         
         {/* Left Side: Visual/Image with Masking Effect */}
         <motion.div 
@@ -41,7 +42,7 @@ const Author = () => {
         >
           {/* Main Portrait - Replace src with Dylan's or a placeholder */}
           <img 
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1000" 
+            src={dylan} 
             alt="Dylan Trussell"
             className="w-full h-full object-cover grayscale brightness-75 group-hover:scale-105 transition-transform duration-1000"
           />
@@ -58,7 +59,7 @@ const Author = () => {
           className="flex flex-col space-y-8"
         >
           <motion.div variants={fadeInUp} className="flex items-center gap-3">
-            <span className="h-[1px] w-8 bg-accent" />
+            <span className="h-px w-8 bg-accent" />
             <span className="text-accent text-[0.7rem] font-bold tracking-[0.4em] uppercase">
               The Author
             </span>
@@ -105,7 +106,7 @@ const Author = () => {
         </motion.div>
 
       </div>
-    </section>
+    </div>
   );
 };
 

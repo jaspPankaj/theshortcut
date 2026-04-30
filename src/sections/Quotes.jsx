@@ -15,9 +15,9 @@ const Quotes = () => {
   const quoteOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.1, 0.2, 0.1]);
 
   return (
-    <section 
+    <div 
       ref={containerRef}
-      className="relative min-h-[70vh] w-full bg-background flex flex-col items-center justify-center px-8 overflow-hidden py-24"
+      className="mainContainer flex flex-col items-center justify-center"
     >
       {/* Massive Background Quotation Mark */}
       <motion.div 
@@ -29,7 +29,7 @@ const Quotes = () => {
         </span>
       </motion.div>
 
-      <div className="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center">
+      <div className="insideContainer text-center flex flex-col items-center">
         {/* Label */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -76,14 +76,8 @@ const Quotes = () => {
         </motion.div>
       </div>
 
-      {/* Decorative vertical line connecting to the next section */}
-      <motion.div 
-        initial={{ height: 0 }}
-        whileInView={{ height: "100px" }}
-        transition={{ delay: 1, duration: 1 }}
-        className="absolute bottom-0 w-[1px] bg-gradient-to-b from-accent/50 to-transparent"
-      />
-    </section>
+      
+    </div>
   );
 };
 

@@ -28,7 +28,7 @@ const About = () => {
   };
 
   return (
-    <section className="mainContainer border-t border-accent/10">
+    <div className="mainContainer border-t border-accent/10">
       <div className="insideContainer bookGrid">
         
         {/* Left Side: Content Reveal */}
@@ -101,7 +101,7 @@ const About = () => {
         </motion.div>
 
       </div>
-    </section>
+    </div>
   );
 };
 

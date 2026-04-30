@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
+  { title: "Home", href: "#hero" },
   { title: "About", href: "#about" },
   { title: "Inside", href: "#chapters" },
   { title: "Author", href: "#author" },
@@ -12,14 +13,14 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-evenly px-6 py-6 border-b border-accent/20 bg-background/80 backdrop-blur-xl md:px-12 md:py-8">
+    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-evenly px-4 py-6 border-b border-accent/20 bg-background/80 backdrop-blur-xl ">
       {/* Logo using your Primary color */}
-      <a href="#" className="font-['Playfair_Display'] text-[1.1rem] tracking-[0.15em] text-primary uppercase no-underline">
+      <a href="/" className="font-['Playfair_Display'] text-[1.1rem] tracking-[0.15em] text-primary uppercase no-underline">
         The Shortcut
       </a>
 
       {/* Desktop Links - Colors updated to Foreground/Accent */}
-      <div className="hidden md:flex items-center gap-8">
+      <div className="hidden md:flex items-center justify-between gap-8">
         {navLinks.map((link) => (
           <a
             key={link.title}
@@ -31,7 +32,7 @@ const Navbar = () => {
         ))}
         {/* CTA Button using Accent color */}
         <a 
-          href="#" 
+          href="https://www.amazon.com/dp/B0GL4T8FXQ"  target="__blank"
           className="text-[0.7rem] tracking-[0.2em] uppercase border border-accent text-accent px-6 py-2.5 hover:bg-accent hover:text-secondary transition-all duration-300 no-underline"
         >
           Buy Now →
@@ -79,7 +80,7 @@ const Navbar = () => {
                 </a>
               ))}
               <a
-                href="#"
+                href="https://www.amazon.com/dp/B0GL4T8FXQ" target="__blank"
                 className="mt-4 px-10 py-4 border border-accent text-accent uppercase tracking-widest hover:bg-accent hover:text-secondary transition-all"
               >
                 Buy Now →

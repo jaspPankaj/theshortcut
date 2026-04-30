@@ -41,21 +41,21 @@ const Home = () => {
       {/* Content Wrapper with Smooth Transitions */}
       <Suspense fallback={<PageLoader />}>
         <main className="flex flex-col">
-          <Hero />
+          <section id="hero"><Hero /></section>
           
           {/* Marquee sits between Hero and Content */}
           <InfoStrip />
           
           {/* Editorial Sections */}
           <div className="relative z-10">
-            <About />
-            <Chapters />
-            <Quotes />      
-            <Author />
+            <section id="about"><About /></section>
+            <section id="chapters"><Chapters /></section>
+            <Quotes />     
+            <section id="author"><Author /></section>
           </div>
 
           {/* Final Conversion */}
-          <CTA />
+          <section id="cta"><CTA /></section>
         </main>
 
         <Footer />

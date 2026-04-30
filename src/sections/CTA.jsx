@@ -3,14 +3,12 @@ import { motion } from "framer-motion";
 
 const CTA = () => {
   return (
-    <section 
-      id="cta" 
-      className="relative bg-secondary py-32 px-8 overflow-hidden border-t border-accent/10"
+    <div  className="mainContainer bg-secondary border-t border-accent/10"
     >
       {/* Background Decorative Element: A glowing aura */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto text-center relative z-10 flex flex-col items-center">
+      <div className="insideContainer centerFlex">
         
         {/* Eyebrow */}
         <motion.div 
@@ -82,7 +80,7 @@ const CTA = () => {
           <span>March 2026</span>
         </motion.div>
       </div>
-    </section>
+    </div>
   );
 };
 

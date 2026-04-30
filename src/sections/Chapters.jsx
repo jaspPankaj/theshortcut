@@ -30,9 +30,9 @@ const Chapters = () => {
   };
 
   return (
-    <section id="chapters" className="relative bg-background py-24 px-8 md:px-16 border-t border-accent/10">
+    <div className="mainContainer border-t border-accent/10">
       {/* Header Section */}
-      <div className="max-w-7xl mx-auto mb-20 text-center flex flex-col items-center">
+      <div className="insideContainer mb-8 text-center flex flex-col items-center">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -76,7 +76,7 @@ const Chapters = () => {
             className="group relative p-10 border border-accent/10 bg-secondary/20 backdrop-blur-md flex flex-col transition-all duration-500 cursor-pointer overflow-hidden"
           >
             {/* Number background decoration */}
-            <div className="absolute -right-4 -top-4 text-9xl font-black text-accent/5 pointer-events-none group-hover:text-accent/10 transition-colors">
+            <div className="absolute right-2 -top-4 text-9xl font-black text-accent/15 pointer-events-none group-hover:text-accent/10 transition-colors">
               {chapter.num}
             </div>
 
@@ -107,7 +107,7 @@ const Chapters = () => {
           </motion.div>
         ))}
       </motion.div>
-    </section>
+    </div>
   );
 };
 
