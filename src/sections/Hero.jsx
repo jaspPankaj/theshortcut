@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import book from "../assets/book.jpg";
 
 const Hero = () => {
   const containerRef = useRef(null);
@@ -102,31 +103,10 @@ const Hero = () => {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-accent/10 blur-[120px] rounded-full" />
           
           <div 
-            className="w-[400px] h-[580px] bg-secondary border border-accent/20 relative shadow-[50px_50px_100px_rgba(0,0,0,0.4)] overflow-hidden group p-12 flex flex-col justify-between"
+            className="w-[400px] h-[580px] bg-secondary border border-accent/20 relative shadow-[50px_50px_100px_rgba(0,0,0,0.4)] overflow-hidden group p-2 flex flex-col justify-between"
             style={{ transformStyle: "preserve-3d" }}
           >
-            {/* Texture Overlay */}
-            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/pinstriped-suit.png')] opacity-20 pointer-events-none" />
-            
-            <div className="flex justify-between items-start">
-              <span className="text-accent font-bold text-[0.6rem] tracking-widest uppercase">
-                Culprit Press
-              </span>
-              <div className="w-10 h-10 border border-accent rounded-full flex items-center justify-center text-[0.5rem] text-accent">
-                30U30
-              </div>
-            </div>
-
-            <div>
-              <h2 className="text-primary font-['Playfair_Display'] text-6xl leading-tight font-black">
-                The<br/>Shortcut
-              </h2>
-              <div className="h-1 w-20 bg-accent mt-4" />
-            </div>
-
-            <div className="text-foreground text-xs tracking-[0.3em] uppercase">
-              Dylan Trussell
-            </div>
+           <img src={book} alt="The Shortcut By Dylan" />
           </div>
         </motion.div>
       </div>
