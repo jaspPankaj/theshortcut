@@ -12,7 +12,7 @@ const Footer = () => {
   return (
     <footer className="relative bg-secondary pt-24 pb-10 px-8 md:px-16 overflow-hidden border-t border-accent/10">
       {/* Decorative Background Text */}
-      <div className="absolute left-[-5%] bottom-[-2%] text-[15vw] font-black text-background/10 select-none pointer-events-none tracking-tighter">
+      <div className="absolute left-1/10 bottom-0 text-[15vw] font-black text-background/10 select-none pointer-events-none tracking-tighter">
         SHORTCUT
       </div>
 
@@ -89,13 +89,7 @@ const Footer = () => {
             <div className="text-[0.6rem] uppercase tracking-[0.3em] text-foreground/30">
               © {currentYear} Culprit Press & Dylan Trussell
             </div>
-            <div className="flex gap-4 text-[0.55rem] uppercase tracking-[0.1em] text-foreground/20">
-              <a href="#" className="hover:text-accent">Privacy</a>
-              <span>/</span>
-              <a href="#" className="hover:text-accent">Terms</a>
-              <span>/</span>
-              <a href="#" className="hover:text-accent">Cookies</a>
-            </div>
+            
           </div>
 
           {/* Magnetic-style Scroll to Top */}
