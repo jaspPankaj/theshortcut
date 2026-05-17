@@ -6,6 +6,7 @@ import Cursor from "../components/Cursor";
 import Navbar from "../components/Navbar";
 import InfoStrip from "../components/InfoStrip";
 import Footer from "../components/Footer";
+import ActionHub from "../components/ActionHub";
 
 // Sections
 import Hero from "../sections/Hero";
@@ -52,10 +53,12 @@ const Home = () => {
             <section id="chapters"><Chapters /></section>
             <Quotes />     
             <section id="author"><Author /></section>
+            <section id="resources"><ActionHub /></section>
           </div>
 
           {/* Final Conversion */}
           <section id="cta"><CTA /></section>
+          
         </main>
 
         <Footer />

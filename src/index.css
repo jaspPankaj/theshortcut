@@ -23,10 +23,7 @@
   --highlight: #f5efe6;     /* Bone Cream */
 }
 
-  html {
-    scroll-snap-type: y mandatory;
-  }
-
+  
   body {
     @apply bg-background text-primary overflow-x-hidden;
     cursor: none;
@@ -53,6 +50,8 @@
   
 }
 
+
+
 @utility mainContainer{
   @apply relative min-h-screen bg-background px-8 md:px-16 overflow-hidden py-24;
 }
@@ -69,4 +68,11 @@
   @apply text-center flex flex-col items-center;
 }
 
+@utility premiumBtnBase {
+  @apply inline-flex items-center justify-center font-['DM_Sans'] text-[0.7rem] uppercase tracking-[0.3em] font-black py-4 px-10 relative overflow-hidden select-none cursor-none transition-all duration-500;
+}
+
+@utility magneticAura {
+  background: radial-gradient(circle 60px at var(--x, 0px) var(--y, 0px), rgba(195, 199, 137, 0.15), transparent 100%);
+}
 

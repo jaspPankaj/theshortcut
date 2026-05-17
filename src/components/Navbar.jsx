@@ -6,6 +6,7 @@ const navLinks = [
   { title: "About", href: "#about" },
   { title: "Inside", href: "#chapters" },
   { title: "Author", href: "#author" },
+  { title: "Resources", href: "#resources" },
   { title: "Get Book", href: "#cta" },
 ];
 
@@ -30,14 +31,15 @@ const Navbar = () => {
             {link.title}
           </a>
         ))}
-        {/* CTA Button using Accent color */}
+        
+      </div>
+      {/* CTA Button using Accent color */}
         <a 
           href="https://www.amazon.com/dp/B0GL4T8FXQ"  target="__blank"
-          className="text-[0.7rem] tracking-[0.2em] uppercase border border-accent text-accent px-6 py-2.5 hover:bg-accent hover:text-secondary transition-all duration-300 no-underline"
+          className="hidden md:flex text-[0.7rem] tracking-[0.2em] uppercase border border-accent text-accent px-6 py-2.5 hover:bg-accent hover:text-secondary transition-all duration-300 no-underline"
         >
           Buy Now →
         </a>
-      </div>
 
       {/* Mobile Toggle Button */}
       <button 

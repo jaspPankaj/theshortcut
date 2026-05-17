@@ -17,7 +17,7 @@ const Quotes = () => {
   return (
     <div 
       ref={containerRef}
-      className="mainContainer flex flex-col items-center justify-center"
+      className="mainContainer bg-secondary flex flex-col items-center justify-center"
     >
       {/* Massive Background Quotation Mark */}
       <motion.div 
