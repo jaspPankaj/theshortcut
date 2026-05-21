@@ -15,6 +15,7 @@ import Chapters from "../sections/Chapters";
 import Quotes from "../sections/Quotes";
 import Author from "../sections/Author";
 import CTA from "../sections/CTA";
+import Contact from "../sections/Contact";
 
 const Home = () => {
   // Global Scroll Progress Logic
@@ -54,6 +55,7 @@ const Home = () => {
             <Quotes />     
             <section id="author"><Author /></section>
             <section id="resources"><ActionHub /></section>
+            <section id="contact"><Contact /></section>
           </div>
 
           {/* Final Conversion */}

@@ -8,7 +8,7 @@ const ECOSYSTEM_REGISTRY = [
     title: "The Book Blueprint",
     desc: "Access the hidden photography, original manuscript mood boards, and raw behind-the-scenes assets behind the production of The Shortcut.",
     ctaText: "Download PDF ↓",
-    href: "https://myshortcut.co/pdf",
+    href: "https://docs.google.com/document/d/1cPQoVL40Qdi4Qfkrn_-Dzr0UVu2-N007JGkp_U11mVA/edit?tab=t.km72vbm5c4ez",
     analyticsId: "download_pdf_blueprint",
   },
   {
