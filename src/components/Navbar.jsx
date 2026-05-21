@@ -18,7 +18,7 @@ const Navbar = () => {
       
       {/* Logo */}
       <a
-        href="/theshortcut/"
+        href="/"
         className="font-['Playfair_Display'] text-[1.1rem] tracking-[0.15em] text-primary uppercase no-underline"
       >
         The Shortcut
