@@ -47,17 +47,17 @@ const Contact = () => {
           <motion.div variants={fadeInUp} className="flex items-center gap-3">
             <span className="h-[1px] w-8 bg-accent" />
             <span className="text-accent text-[0.7rem] font-bold tracking-[0.4em] uppercase">
-              Direct Protocol
+              My Pledge
             </span>
           </motion.div>
 
           <motion.h2
             variants={fadeInUp}
-            className="font-['Playfair_Display'] text-5xl md:text-7xl text-primary leading-[1.1] font-black"
+            className="font-['Playfair_Display'] text-3xl md:text-5xl text-primary leading-[1.1] font-black"
           >
-            Skip the <br />
-            <span className="italic text-accent">Bureaucracy.</span> <br />
-            <span className="text-highlight font-light">Get straight answers.</span>
+            I Wrote The Shortcut <br />
+            <span className="italic text-accent">To Help You Move Faster —</span> <br />
+            <span className="text-highlight font-light">Without Losing Yourself.</span>
           </motion.h2>
 
           <motion.div
@@ -69,7 +69,7 @@ const Contact = () => {
             variants={fadeInUp}
             className="text-foreground/90 font-['Cormorant_Garamond'] text-lg md:text-xl max-w-md leading-relaxed italic"
           >
-            "If you are applying the frameworks from 'The Shortcut' to your startup, pitching a high-value partnership, or requesting Dylan for private counsel, use this line. No fillers."
+            "This book was never about hacks, noise, or empty motivation.It was built from real lessons, failures, calculated risks, and the systems that create momentum when everyone else stays stuck.If The Shortcut helped you think differently, build smarter, or take action you were delaying — then my mission is already working."
           </motion.p>
 
           {/* Book Specific Directory */}

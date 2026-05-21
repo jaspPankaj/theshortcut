@@ -85,7 +85,7 @@ const Hero = () => {
             <a target="__blank" href="https://www.amazon.com/dp/B0GL4T8FXQ" className="bg-accent text-secondary px-10 py-4 text-[0.75rem] font-black uppercase tracking-[0.2em] hover:bg-highlight transition-colors duration-500 shadow-xl shadow-black/20">
               Get Kindle Edition
             </a>
-            <a href="#" className="border border-accent/30 text-primary px-10 py-4 text-[0.75rem] font-bold uppercase tracking-[0.2em] hover:border-accent transition-all">
+            <a href="#contact" className="border border-accent/30 text-primary px-10 py-4 text-[0.75rem] font-bold uppercase tracking-[0.2em] hover:border-accent transition-all">
               See Inside
             </a>
           </motion.div>

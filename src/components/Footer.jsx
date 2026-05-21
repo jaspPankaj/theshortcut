@@ -60,7 +60,7 @@ const Footer = () => {
                 },
                 { 
                   name: 'Instagram', 
-                  url: '#', 
+                  url: 'https://www.instagram.com/theshortcutbook/', 
                   brandColor: '#E1306C',
                   glowStyle: 'rgba(225, 48, 108, 0.35)',
                   hasGradient: true,
@@ -68,7 +68,7 @@ const Footer = () => {
                 }, 
                 { 
                   name: 'LinkedIn', 
-                  url: '#',
+                  url: 'https://www.linkedin.com/in/dylantrussell/',
                   brandColor: '#0077B5',
                   glowStyle: 'rgba(0, 119, 181, 0.35)',
                   hasGradient: false,
