@@ -46,8 +46,7 @@ const Author = () => {
             alt="Dylan Trussell"
             className="w-full h-full object-cover grayscale brightness-75 group-hover:scale-105 transition-transform duration-1000"
           />
-          {/* Geometric Accent */}
-          <div className="absolute bottom-[-10%] right-[-10%] w-64 h-64 border border-accent/20 rounded-full" />
+          
         </motion.div>
 
         {/* Right Side: Editorial Content */}
