@@ -11,7 +11,7 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename='/theshortcut/'>
       <Routes>
         <Route index element={<Home />} />
         <Route path="*" element={<NotFound />} />

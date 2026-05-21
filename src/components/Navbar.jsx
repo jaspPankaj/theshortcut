@@ -14,13 +14,17 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-evenly px-4 py-6 border-b border-accent/20 bg-background/80 backdrop-blur-xl ">
-      {/* Logo using your Primary color */}
-      <a href="/" className="font-['Playfair_Display'] text-[1.1rem] tracking-[0.15em] text-primary uppercase no-underline">
+    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-evenly px-4 py-6 border-b border-accent/20 bg-background/80 backdrop-blur-xl">
+      
+      {/* Logo */}
+      <a
+        href="#hero"
+        className="font-['Playfair_Display'] text-[1.1rem] tracking-[0.15em] text-primary uppercase no-underline"
+      >
         The Shortcut
       </a>
 
-      {/* Desktop Links - Colors updated to Foreground/Accent */}
+      {/* Desktop Links */}
       <div className="hidden md:flex items-center justify-between gap-8">
         {navLinks.map((link) => (
           <a
@@ -31,36 +35,52 @@ const Navbar = () => {
             {link.title}
           </a>
         ))}
-        
       </div>
-      {/* CTA Button using Accent color */}
-        <a 
-          href="https://www.amazon.com/dp/B0GL4T8FXQ"  target="__blank"
-          className="hidden md:flex text-[0.7rem] tracking-[0.2em] uppercase border border-accent text-accent px-6 py-2.5 hover:bg-accent hover:text-secondary transition-all duration-300 no-underline"
-        >
-          Buy Now →
-        </a>
 
-      {/* Mobile Toggle Button */}
-      <button 
-        className="md:hidden flex flex-col gap-1.5 z-[110]" 
+      {/* CTA */}
+      <a
+        href="https://www.amazon.com/dp/B0GL4T8FXQ"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hidden md:flex text-[0.7rem] tracking-[0.2em] uppercase border border-accent text-accent px-6 py-2.5 hover:bg-accent hover:text-secondary transition-all duration-300 no-underline"
+      >
+        Buy Now →
+      </a>
+
+      {/* Mobile Toggle */}
+      <button
+        className="md:hidden flex flex-col gap-1.5 z-[110]"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <motion.span 
-          animate={isOpen ? { rotate: 45, y: 8, backgroundColor: "#c3c789" } : { rotate: 0, y: 0, backgroundColor: "#f4f8f9" }}
+        <motion.span
+          animate={
+            isOpen
+              ? { rotate: 45, y: 8, backgroundColor: "#c3c789" }
+              : { rotate: 0, y: 0, backgroundColor: "#f4f8f9" }
+          }
           className="w-8 h-[1px] block"
         />
-        <motion.span 
-          animate={isOpen ? { opacity: 0 } : { opacity: 1, backgroundColor: "#f4f8f9" }}
+
+        <motion.span
+          animate={
+            isOpen
+              ? { opacity: 0 }
+              : { opacity: 1, backgroundColor: "#f4f8f9" }
+          }
           className="w-8 h-[1px] block"
         />
-        <motion.span 
-          animate={isOpen ? { rotate: -45, y: -8, backgroundColor: "#c3c789" } : { rotate: 0, y: 0, backgroundColor: "#f4f8f9" }}
+
+        <motion.span
+          animate={
+            isOpen
+              ? { rotate: -45, y: -8, backgroundColor: "#c3c789" }
+              : { rotate: 0, y: 0, backgroundColor: "#f4f8f9" }
+          }
           className="w-8 h-[1px] block"
         />
       </button>
 
-      {/* Mobile Menu Overlay - Using Secondary/Background tones */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -81,8 +101,11 @@ const Navbar = () => {
                   {link.title}
                 </a>
               ))}
+
               <a
-                href="https://www.amazon.com/dp/B0GL4T8FXQ" target="__blank"
+                href="https://www.amazon.com/dp/B0GL4T8FXQ"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-4 px-10 py-4 border border-accent text-accent uppercase tracking-widest hover:bg-accent hover:text-secondary transition-all"
               >
                 Buy Now →
