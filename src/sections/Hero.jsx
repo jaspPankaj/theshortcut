@@ -86,7 +86,7 @@ const Hero = () => {
               Get Kindle Edition
             </a>
             <a href="#contact" className="border border-accent/30 text-primary px-10 py-4 text-[0.75rem] font-bold uppercase tracking-[0.2em] hover:border-accent transition-all">
-              See Inside
+              Connect With Us
             </a>
           </motion.div>
         </motion.div>
