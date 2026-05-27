@@ -10,15 +10,44 @@ const CTA = () => {
 
       <div className="insideContainer centerFlex">
         
-        {/* Eyebrow */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-accent text-[0.7rem] font-bold tracking-[0.4em] uppercase mb-8"
-        >
-          Available Now · Kindle Edition
-        </motion.div>
+        {/* Eyebrow with Luxury Pulse Indicator */}
+<motion.div 
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  className="inline-flex items-center gap-3 text-accent text-[0.7rem] font-bold tracking-[0.4em] uppercase mb-8"
+>
+  {/* The Blink Light Assembly */}
+  <div className="relative flex h-2 w-2 items-center justify-center">
+    {/* Outer Animated Pulse Wave */}
+    <motion.span 
+      animate={{
+        scale: [1, 2.5, 1],
+        opacity: [0.6, 0, 0.6]
+      }}
+      transition={{
+        duration: 2,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }}
+      className="absolute inline-flex h-full w-full rounded-full bg-accent/60"
+    />
+    {/* Core Steady Blink Light */}
+    <motion.span 
+      animate={{
+        opacity: [1, 0.4, 1]
+      }}
+      transition={{
+        duration: 2,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }}
+      className="relative inline-flex h-2 w-2 rounded-full bg-accent shadow-[0_0_8px_rgba(195,199,137,0.8)]"
+    />
+  </div>
+
+  <span>Available Now</span>
+</motion.div>
 
         {/* Title */}
         <motion.h2 

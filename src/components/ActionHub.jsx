@@ -86,7 +86,7 @@ const HubCard = memo(({ item }) => {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       whileHover={{ y: -8 }}
-      className="group relative flex flex-col justify-between p-8 md:p-10 min-h-[460px] bg-secondary/10 border border-accent/10 backdrop-blur-md transition-all duration-500 ease-[0.16,1,0.3,1] overflow-hidden select-none cursor-none"
+      className="group relative flex flex-col rounded-2xl justify-between p-8 md:p-10 min-h-[320px] bg-secondary/10 border border-accent/10 backdrop-blur-md transition-all duration-500 ease-[0.16,1,0.3,1] overflow-hidden select-none cursor-none"
       style={{
         transformStyle: "preserve-3d",
         transform: "perspective(1000px) rotateX(var(--rotate-x, 0deg)) rotateY(var(--rotate-y, 0deg))",

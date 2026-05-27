@@ -1,109 +1,145 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Contact = () => {
-  const [formState, setFormState] = useState({ name: "", email: "", objective: "", message: "" });
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formState, setFormState] = useState({ name: "", email: "", phone: "", challenge: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [notification, setNotification] = useState({ show: false, type: "success", message: "" });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 5000);
-  };
+    setIsSubmitting(true);
 
-  const containerVariants = {
-    initial: { opacity: 0 },
-    whileInView: {
-      opacity: 1,
-      transition: { staggerChildren: 0.12, delayChildren: 0.2 },
-    },
-  };
+    try {
+      const response = await fetch("https://formspree.io/f/mdajygzz", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          Name: formState.name,
+          Email: formState.email,
+          Phone: formState.phone,
+          "90-Day Challenge Target": formState.challenge
+        })
+      });
 
-  const fadeInUp = {
-    initial: { opacity: 0, y: 40 },
-    whileInView: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-    },
+      if (response.ok) {
+        // Clear the input fields completely
+        setFormState({ name: "", email: "", phone: "", challenge: "" });
+        
+        // Trigger Premium Success Notification
+        setNotification({
+          show: true,
+          type: "success",
+          message: "Challenge Locked. T-90 Days transmission protocol engaged."
+        });
+      } else {
+        throw new Error("Transmission failed");
+      }
+    } catch (error) {
+      // Trigger Premium Error Notification
+      setNotification({
+        show: true,
+        type: "error",
+        message: "Secure uplink interrupted. Please check your data stream."
+      });
+    } finally {
+      setIsSubmitting(false);
+
+      // Auto-dismiss the toast notification safely after exactly 3 seconds
+      setTimeout(() => {
+        setNotification((prev) => ({ ...prev, show: false }));
+      }, 3000);
+    }
   };
 
   return (
     <div className="mainContainer border-t border-accent/10 relative overflow-hidden">
-      {/* Dynamic Background Text honoring 'The Shortcut' */}
-      <div className="absolute left-[5%] bottom-[5%] text-[22vw] font-black text-secondary/10 select-none pointer-events-none tracking-tighter">
-        BYPASS
+      {/* Toast Notification Assembly */}
+      <AnimatePresence>
+        {notification.show && (
+          <motion.div
+            initial={{ opacity: 0, y: 30, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed bottom-8 right-8 z-50 flex items-center gap-4 bg-secondary/90 backdrop-blur-xl border border-accent/20 px-6 py-4 rounded-sm shadow-[0_20px_40px_rgba(0,0,0,0.3)] max-w-sm"
+          >
+            {/* Syncing the pulse light theme to look cohesive */}
+            <div className="relative flex h-2 w-2 items-center justify-center shrink-0">
+              <motion.span 
+                animate={{ scale: [1, 2.5, 1], opacity: [0.6, 0, 0.6] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                className={`absolute inline-flex h-full w-full rounded-full ${notification.type === 'success' ? 'bg-accent/60' : 'bg-red-500/60'}`}
+              />
+              <span className={`relative inline-flex h-2 w-2 rounded-full ${notification.type === 'success' ? 'bg-accent' : 'bg-red-500'}`} />
+            </div>
+            
+            <p className="font-['DM_Sans'] text-xs uppercase tracking-[0.15em] text-primary leading-relaxed">
+              {notification.message}
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Background Kinetic Text honoring Chapter 6 */}
+      <div className="absolute -left-[5%] top-1/4 text-[14vw] uppercase font-black text-secondary/5 select-none pointer-events-none tracking-tighter">
+        NO RAGRETS
       </div>
 
       <div className="insideContainer bookGrid">
-        {/* Left Side: Strategic Book Channels */}
+        {/* Left Side: The 90-Day Manifest Manifesto */}
         <motion.div
-          variants={containerVariants}
-          initial="initial"
-          whileInView="whileInView"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           className="flex flex-col space-y-8 z-10"
         >
-          <motion.div variants={fadeInUp} className="flex items-center gap-3">
-            <span className="h-[1px] w-8 bg-accent" />
+          {/* Eyebrow with Attention-Grabbing Pulse */}
+          <div className="inline-flex items-center gap-3">
+            <div className="relative flex h-2 w-2 items-center justify-center">
+              <motion.span 
+                animate={{ scale: [1, 2.5, 1], opacity: [0.6, 0, 0.6] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute inline-flex h-full w-full rounded-full bg-accent/60"
+              />
+              <motion.span 
+                animate={{ opacity: [1, 0.4, 1] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                className="relative inline-flex h-2 w-2 rounded-full bg-accent shadow-[0_0_8px_rgba(195,199,137,0.9)]"
+              />
+            </div>
             <span className="text-accent text-[0.7rem] font-bold tracking-[0.4em] uppercase">
-              My Pledge
+              The 90-Day Regret Test
             </span>
-          </motion.div>
+          </div>
 
-          <motion.h2
-            variants={fadeInUp}
-            className="font-['Playfair_Display'] text-3xl md:text-5xl text-primary leading-[1.1] font-black"
-          >
-            I Wrote The Shortcut <br />
-            <span className="italic text-accent">To Help You Move Faster —</span> <br />
-            <span className="text-highlight font-light">Without Losing Yourself.</span>
+          <motion.h2 className="font-['Playfair_Display'] text-3xl md:text-5xl text-primary leading-[1.1] font-black">
+            Lock In Your Course Correction. <br />
+            <span className="italic text-accent">I'll Check Back In 3 Months.</span>
           </motion.h2>
 
-          <motion.div
-            variants={fadeInUp}
-            className="w-24 h-[1px] bg-accent/40 my-2"
-          />
+          <div className="w-24 h-[1px] bg-accent/40 my-2" />
 
-          <motion.p
-            variants={fadeInUp}
-            className="text-foreground/90 font-['Cormorant_Garamond'] text-lg md:text-xl max-w-md leading-relaxed italic"
-          >
-            "This book was never about hacks, noise, or empty motivation.It was built from real lessons, failures, calculated risks, and the systems that create momentum when everyone else stays stuck.If The Shortcut helped you think differently, build smarter, or take action you were delaying — then my mission is already working."
-          </motion.p>
+          <p className="text-foreground/90 font-['Cormorant_Garamond'] text-lg md:text-xl max-w-md leading-relaxed italic">
+            "Write down what it is you would change right now... that shot in the dark you would take or that long overdue course correction. Act immediately because in three months, I’m going to drop into your inbox and ask you face-to-face how it went."
+          </p>
 
-          {/* Book Specific Directory */}
-          <motion.div variants={fadeInUp} className="space-y-6 pt-4">
-            <div>
-              <h4 className="text-[0.65rem] uppercase tracking-[0.3em] text-accent font-bold mb-1">
-                Founders & Case Studies
-              </h4>
-              <p className="font-['DM_Sans'] text-sm text-primary/80">
-                frameworks@culpritpress.com
-              </p>
+          <div className="space-y-4 pt-2 font-['DM_Sans'] text-xs text-primary/70">
+            <div className="flex items-start gap-3">
+              <span className="text-accent font-bold">01 /</span>
+              <p>Filter the choice through your 80-year-old self. Will you regret staying safe?</p>
             </div>
-
-            <div>
-              <h4 className="text-[0.65rem] uppercase tracking-[0.3em] text-accent font-bold mb-1">
-                Keynotes & Book Tour Booking
-              </h4>
-              <p className="font-['DM_Sans'] text-sm text-primary/80">
-                booking@dylantrussell.com
-              </p>
+            <div className="flex items-start gap-3">
+              <span className="text-accent font-bold">02 /</span>
+              <p>Your timeline starts today. Your challenge payload is securely transmitted straight to Formspree processing channels.</p>
             </div>
-
-            <div>
-              <h4 className="text-[0.65rem] uppercase tracking-[0.3em] text-accent font-bold mb-1">
-                Corporate Bulk Distribution
-              </h4>
-              <p className="font-['Cormorant_Garamond'] text-sm text-foreground/70 italic">
-                Orders above 50+ copies automatically qualify for digital workshops.
-              </p>
-            </div>
-          </motion.div>
+          </div>
         </motion.div>
 
-        {/* Right Side: High-Fidelity Strategic Intake Form */}
+        {/* Right Side: High-Fidelity Intake Form */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -111,41 +147,25 @@ const Contact = () => {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="bg-secondary/30 backdrop-blur-xl p-8 md:p-12 border border-accent/10 rounded-sm relative z-10"
         >
-          {isSubmitted ? (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="h-full flex flex-col items-center justify-center text-center py-20"
-            >
-              <div className="w-12 h-12 rounded-full border border-accent flex items-center justify-center text-accent mb-6">
-                →
-              </div>
-              <h3 className="font-['Playfair_Display'] text-2xl text-primary mb-2">
-                Shortcut Engaged
-              </h3>
-              <p className="text-foreground/60 text-sm font-['Cormorant_Garamond'] italic max-w-xs">
-                Your dossier has safely circumvented the traditional queue. Expect transmission feedback if your objective aligns.
-              </p>
-            </motion.div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="space-y-2">
-                <label className="block text-[0.6rem] uppercase tracking-[0.3em] text-accent font-bold">
-                  Identity / Company Name
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={formState.name}
-                  onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                  placeholder="Your Name or Enterprise"
-                  className="w-full bg-background/20 border border-accent/20 px-4 py-4 text-sm text-primary outline-none focus:border-accent transition-all placeholder:text-foreground/20 font-['DM_Sans']"
-                />
-              </div>
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div className="space-y-2">
+              <label className="block text-[0.6rem] uppercase tracking-[0.3em] text-accent font-bold">
+                Your Identity
+              </label>
+              <input
+                type="text"
+                required
+                value={formState.name}
+                onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                placeholder="First and last name"
+                className="w-full bg-background/20 border border-accent/20 px-4 py-3.5 text-sm text-primary outline-none focus:border-accent transition-all placeholder:text-foreground/20 font-['DM_Sans']"
+              />
+            </div>
 
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label className="block text-[0.6rem] uppercase tracking-[0.3em] text-accent font-bold">
-                  Communication Endpoint
+                  Email Endpoint
                 </label>
                 <input
                   type="email"
@@ -153,51 +173,49 @@ const Contact = () => {
                   value={formState.email}
                   onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                   placeholder="you@domain.com"
-                  className="w-full bg-background/20 border border-accent/20 px-4 py-4 text-sm text-primary outline-none focus:border-accent transition-all placeholder:text-foreground/20 font-['DM_Sans']"
+                  className="w-full bg-background/20 border border-accent/20 px-4 py-3.5 text-sm text-primary outline-none focus:border-accent transition-all placeholder:text-foreground/20 font-['DM_Sans']"
                 />
               </div>
 
               <div className="space-y-2">
                 <label className="block text-[0.6rem] uppercase tracking-[0.3em] text-accent font-bold">
-                  Primary Objective
+                  Secure Voice Line (Phone)
                 </label>
-                <select
-                  value={formState.objective}
-                  onChange={(e) => setFormState({ ...formState, objective: e.target.value })}
-                  className="w-full bg-secondary/80 border border-accent/20 px-4 py-4 text-sm text-primary/80 outline-none focus:border-accent transition-all font-['DM_Sans'] custom-select"
-                >
-                  <option value="" disabled>Select your acceleration target...</option>
-                  <option value="press">Media, Interview, or Review Copy</option>
-                  <option value="bulk">Bulk Corporate Orders (50+ copies)</option>
-                  <option value="consulting">Private Venture Consulting</option>
-                  <option value="success">Sharing a 'Shortcut' Success Story</option>
-                </select>
-              </div>
-
-              <div className="space-y-2">
-                <label className="block text-[0.6rem] uppercase tracking-[0.3em] text-accent font-bold">
-                  The Brief
-                </label>
-                <textarea
-                  rows="3"
+                <input
+                  type="tel"
                   required
-                  value={formState.message}
-                  onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                  placeholder="Keep it concise. What are we building or bypassing?"
-                  className="w-full bg-background/20 border border-accent/20 px-4 py-4 text-sm text-primary outline-none focus:border-accent transition-all placeholder:text-foreground/20 font-['DM_Sans'] resize-none"
+                  value={formState.phone}
+                  onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
+                  placeholder="+1 (555) 000-0000"
+                  className="w-full bg-background/20 border border-accent/20 px-4 py-3.5 text-sm text-primary outline-none focus:border-accent transition-all placeholder:text-foreground/20 font-['DM_Sans']"
                 />
               </div>
+            </div>
 
-              <motion.button
-                type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full bg-accent text-secondary py-5 text-[0.75rem] font-black uppercase tracking-[0.2em] hover:bg-highlight transition-colors duration-500 shadow-xl shadow-black/10 cursor-none"
-              >
-                Initiate Contact
-              </motion.button>
-            </form>
-          )}
+            <div className="space-y-2">
+              <label className="block text-[0.6rem] uppercase tracking-[0.3em] text-accent font-bold">
+                Your Overdue Course Correction / Shot in the dark
+              </label>
+              <textarea
+                rows="4"
+                required
+                value={formState.challenge}
+                onChange={(e) => setFormState({ ...formState, challenge: e.target.value })}
+                placeholder="What company are you launching? What relationship are you ending? What truth are you finally declaring? Be devastatingly honest."
+                className="w-full bg-background/20 border border-accent/20 px-4 py-4 text-sm text-primary outline-none focus:border-accent transition-all placeholder:text-foreground/20 font-['DM_Sans'] resize-none leading-relaxed"
+              />
+            </div>
+
+            <motion.button
+              type="submit"
+              disabled={isSubmitting}
+              whileHover={{ scale: isSubmitting ? 1 : 1.01 }}
+              whileTap={{ scale: isSubmitting ? 1 : 0.99 }}
+              className="w-full bg-accent text-secondary py-4 text-[0.75rem] font-black uppercase tracking-[0.2em] hover:bg-highlight transition-colors duration-500 shadow-xl shadow-black/10 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? "Transmitting..." : "Accept Challenge & Start 90-Day Clock"}
+            </motion.button>
+          </form>
         </motion.div>
       </div>
     </div>
