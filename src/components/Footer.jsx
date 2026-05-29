@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 
 const navLinks = [
   { title: "Home", href: "#hero" },
@@ -10,92 +10,17 @@ const navLinks = [
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const [email, setEmail] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [notification, setNotification] = useState({ show: false, type: "success", message: "" });
 
   // Scroll to top handler for the magnetic button
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleNewsletterSubmit = async (e) => {
-    e.preventDefault();
-    if (!email) return;
-
-    setIsSubmitting(true);
-
-    try {
-      const response = await fetch("https://formspree.io/f/xvzydaqp", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify({
-          "Newsletter Email": email,
-          Source: "Footer Subscription Module"
-        })
-      });
-
-      if (response.ok) {
-        setEmail(""); // Cleanly reset input field
-        setNotification({
-          show: true,
-          type: "success",
-          message: "Uplink Secure. Welcome to the editorial list."
-        });
-      } else {
-        throw new Error("Subscription failed");
-      }
-    } catch (error) {
-      setNotification({
-        show: true,
-        type: "error",
-        message: "Transmission interrupted. Please try again."
-      });
-    } finally {
-      setIsSubmitting(false);
-
-      // Auto-dismiss the toast notification safely after exactly 3 seconds
-      setTimeout(() => {
-        setNotification((prev) => ({ ...prev, show: false }));
-      }, 3000);
-    }
-  };
-
   return (
     <footer className="relative bg-secondary pt-24 pb-10 px-8 md:px-16 overflow-hidden border-t border-accent/10">
-      {/* Toast Notification Assembly for Newsletter Signup */}
-      <AnimatePresence>
-        {notification.show && (
-          <motion.div
-            initial={{ opacity: 0, y: 30, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed bottom-8 right-8 z-50 flex items-center gap-4 bg-secondary/90 backdrop-blur-xl border border-accent/20 px-6 py-4 rounded-sm shadow-[0_20px_40px_rgba(0,0,0,0.3)] max-w-sm"
-          >
-            {/* Syncing the glowing pulse indicator theme */}
-            <div className="relative flex h-2 w-2 items-center justify-center shrink-0">
-              <motion.span 
-                animate={{ scale: [1, 2.5, 1], opacity: [0.6, 0, 0.6] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                className={`absolute inline-flex h-full w-full rounded-full ${notification.type === 'success' ? 'bg-accent/60' : 'bg-red-500/60'}`}
-              />
-              <span className={`relative inline-flex h-2 w-2 rounded-full ${notification.type === 'success' ? 'bg-accent' : 'bg-red-500'}`} />
-            </div>
-            
-            <p className="font-['DM_Sans'] text-xs uppercase tracking-[0.15em] text-primary leading-relaxed">
-              {notification.message}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       {/* Decorative Background Text */}
-      <div className="absolute left-[10%] bottom-0 text-[15vw] font-black text-background/10 select-none pointer-events-none tracking-tighter">
-        SHORTCUT
+      <div className="absolute left-[15%] bottom-0 text-[10vw] font-black text-background/10 select-none pointer-events-none tracking-tighter">
+        THE SHORTCUT
       </div>
 
       <div className="insideContainer">
@@ -110,7 +35,7 @@ const Footer = () => {
             >
               The Shortcut<span className="text-accent">.</span>
             </motion.div>
-            <p className="text-foreground/60 text-lg font-['Cormorant_Garamond'] max-w-sm Husband leading-relaxed italic">
+            <p className="text-foreground/60 text-lg font-['Cormorant_Garamond'] max-w-sm leading-relaxed italic">
               "The definitive roadmap for those who refuse to wait for permission to build something great."
             </p>
             
@@ -224,32 +149,24 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 3: Newsletter Module (4/12) */}
-          <div className="lg:col-span-4 bg-background/30 backdrop-blur-xl p-8 border border-accent/10 rounded-sm">
-            <h5 className="text-primary uppercase tracking-[0.2em] text-[0.7rem] font-bold mb-4">
-              Join the Editorial List
-            </h5>
-            <p className="text-foreground/60 text-xs mb-6 leading-relaxed">
-              Get raw strategies on branding and startup exits twice a month.
-            </p>
-            <form onSubmit={handleNewsletterSubmit} className="relative group">
-              <input 
-                type="email" 
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="email@example.com"
-                disabled={isSubmitting}
-                className="w-full bg-secondary/50 border border-accent/20 px-4 py-3 text-sm text-primary outline-none focus:border-accent transition-all placeholder:text-foreground/20 disabled:opacity-50"
-              />
-              <button 
-                type="submit" 
-                disabled={isSubmitting}
-                className="absolute right-2 top-1/2 -translate-y-1/2 text-accent text-xs font-bold hover:translate-x-1 transition-all disabled:opacity-50"
-              >
-                {isSubmitting ? "..." : "GO →"}
-              </button>
-            </form>
+          {/* Column 3: Custom Editorial Epilogue Quote (4/12) */}
+          <div className="lg:col-span-4 flex flex-col justify-between border-l border-accent/10 pl-6 md:pl-8 py-1">
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                <h5 className="text-accent uppercase tracking-[0.25em] text-[0.65rem] font-bold">
+                  The Final Entry
+                </h5>
+              </div>
+              <p className="text-primary/95 font-['Cormorant_Garamond'] text-lg md:text-xl italic leading-relaxed">
+                "Stop looking for signs. Stop looking for perfect conditions. The door is already open, and the only loop left to break is the one running inside your head."
+              </p>
+            </div>
+            <div className="pt-4 flex items-center gap-2">
+              <span className="text-[0.6rem] uppercase tracking-[0.2em] text-foreground/40 font-['DM_Sans']">
+                — Dylan Trussell
+              </span>
+            </div>
           </div>
         </div>
 

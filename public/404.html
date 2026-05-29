@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/src/assets/favicon.png" />
+  <title>404 — The Shortcut By Dylan Trussell</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      background:#5c8391;
+      color:#f5f5f5;
+      min-height:100vh;
+      overflow:hidden;
+      font-family:'DM Sans',sans-serif;
+      position:relative;
+    }
+
+    .wrapper{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:40px;
+      position:relative;
+      z-index:2;
+    }
+
+    .bg404{
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      font-size:30vw;
+      font-weight:900;
+      color:rgba(49, 70, 77, 0.4);
+      line-height:1;
+      pointer-events:none;
+      user-select:none;
+      z-index:0;
+    }
+
+    .grid{
+      width:100%;
+      max-width:1200px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:80px;
+      align-items:center;
+      position:relative;
+      z-index:2;
+    }
+
+    .left{
+      border-right:1px solid rgba(255,255,255,0.08);
+      padding-right:60px;
+    }
+
+    .status{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:40px;
+    }
+
+    .dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:#ff4d4d;
+      animation:pulse 2s infinite;
+    }
+
+    @keyframes pulse{
+      0%{
+        box-shadow:0 0 0 0 rgba(255,77,77,0.7);
+      }
+      70%{
+        box-shadow:0 0 0 15px rgba(255,77,77,0);
+      }
+      100%{
+        box-shadow:0 0 0 0 rgba(255,77,77,0);
+      }
+    }
+
+    .status span{
+      font-size:11px;
+      letter-spacing:0.35em;
+      text-transform:uppercase;
+      color:#c89b63;
+      font-weight:700;
+    }
+
+    h1{
+      font-family:'Playfair Display',serif;
+      font-size:5rem;
+      line-height:0.95;
+      margin-bottom:30px;
+      font-weight:900;
+    }
+
+    h1 em{
+      color:#c89b63;
+      font-style:italic;
+    }
+
+    .sub{
+      color:rgba(255,255,255,0.35);
+      text-transform:uppercase;
+      letter-spacing:0.2em;
+      font-size:12px;
+    }
+
+    .quote{
+      font-family:'Cormorant Garamond',serif;
+      font-size:2rem;
+      line-height:1.5;
+      font-style:italic;
+      color:rgba(255,255,255,0.92);
+    }
+
+    .meta{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-top:30px;
+      margin-bottom:50px;
+    }
+
+    .line{
+      width:30px;
+      height:1px;
+      background:rgba(200,155,99,0.5);
+    }
+
+    .meta span{
+      color:#c89b63;
+      font-size:10px;
+      letter-spacing:0.35em;
+      text-transform:uppercase;
+      font-weight:700;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:18px;
+      padding:18px 34px;
+      background:#111;
+      border:1px solid rgba(200,155,99,0.2);
+      color:white;
+      text-decoration:none;
+      text-transform:uppercase;
+      letter-spacing:0.25em;
+      font-size:11px;
+      font-weight:700;
+      transition:all .3s ease;
+    }
+
+    .btn:hover{
+      transform:translateX(6px);
+      border-color:#c89b63;
+    }
+
+    .footer{
+      position:absolute;
+      bottom:30px;
+      left:40px;
+      font-size:10px;
+      letter-spacing:0.3em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,0.2);
+    }
+
+    @media(max-width:900px){
+
+      body{
+        overflow:auto;
+      }
+
+      .grid{
+        grid-template-columns:1fr;
+        gap:60px;
+      }
+
+      .left{
+        border-right:none;
+        border-bottom:1px solid rgba(255,255,255,0.08);
+        padding-right:0;
+        padding-bottom:50px;
+      }
+
+      h1{
+        font-size:4rem;
+      }
+
+      .quote{
+        font-size:1.7rem;
+      }
+
+      .footer{
+        left:20px;
+      }
+    }
+
+    @media(max-width:600px){
+
+      .wrapper{
+        padding:24px;
+      }
+
+      h1{
+        font-size:3rem;
+      }
+
+      .quote{
+        font-size:1.35rem;
+      }
+
+      .btn{
+        width:100%;
+        justify-content:center;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="bg404">404</div>
+
+  <div class="wrapper">
+
+    <div class="grid">
+
+      <div class="left">
+
+        <div class="status">
+          <div class="dot"></div>
+          <span>Route Interrupted</span>
+        </div>
+
+        <h1>
+          Lost Your <br>
+          <em>Footing?</em>
+        </h1>
+
+        <p class="sub">
+          The layout configuration at this endpoint does not exist.
+        </p>
+
+      </div>
+
+      <div class="right">
+
+        <p class="quote">
+          "Most paths are just beautifully decorated loops designed to keep you walking in circles. Recognizing a dead end early isn’t a failure—it is the exact moment your shortcut begins."
+        </p>
+
+        <div class="meta">
+          <div class="line"></div>
+          <span>The Shortcut / Editorial Strategy</span>
+        </div>
+
+        <a href="/" class="btn">
+          Return to Home Page →
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="footer">
+    © 2026 Culprit Press & Dylan Trussell
+  </div>
+
+</body>
+</html>

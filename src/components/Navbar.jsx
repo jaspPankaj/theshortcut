@@ -7,7 +7,7 @@ const navLinks = [
   { title: "Inside", href: "#chapters" },
   { title: "Author", href: "#author" },
   { title: "Resources", href: "#resources" },
-  { title: "My Pledge", href: "#contact" },
+  { title: "Your Pledge", href: "#contact" },
 ];
 
 const Navbar = () => {

@@ -11,7 +11,7 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("https://formspree.io/f/mdajygzz", {
+      const response = await fetch("https://formspree.io/f/xqejjprk", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -162,8 +162,7 @@ const Contact = () => {
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-2">
+            <div className="space-y-2">
                 <label className="block text-[0.6rem] uppercase tracking-[0.3em] text-accent font-bold">
                   Email Endpoint
                 </label>
@@ -176,21 +175,6 @@ const Contact = () => {
                   className="w-full bg-background/20 border border-accent/20 px-4 py-3.5 text-sm text-primary outline-none focus:border-accent transition-all placeholder:text-foreground/20 font-['DM_Sans']"
                 />
               </div>
-
-              <div className="space-y-2">
-                <label className="block text-[0.6rem] uppercase tracking-[0.3em] text-accent font-bold">
-                  Secure Voice Line (Phone)
-                </label>
-                <input
-                  type="tel"
-                  required
-                  value={formState.phone}
-                  onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
-                  placeholder="+1 (555) 000-0000"
-                  className="w-full bg-background/20 border border-accent/20 px-4 py-3.5 text-sm text-primary outline-none focus:border-accent transition-all placeholder:text-foreground/20 font-['DM_Sans']"
-                />
-              </div>
-            </div>
 
             <div className="space-y-2">
               <label className="block text-[0.6rem] uppercase tracking-[0.3em] text-accent font-bold">

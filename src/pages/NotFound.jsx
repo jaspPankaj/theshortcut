@@ -1,14 +1,7 @@
 import React, { Suspense } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 
-// Components
-import Cursor from "../components/Cursor";
-import Navbar from "../components/Navbar";
-import InfoStrip from "../components/InfoStrip";
-import Footer from "../components/Footer";
 
-// Sections
-import CTA from "../sections/CTA";
 // Import the actual 404 visual view section here and name it uniquely
 import NotFoundContent from "../sections/NotFound"; 
 
